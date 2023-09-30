@@ -12,11 +12,13 @@ from models.amenity import Amenity
 
 
 classes = {'users': User, 'states': State, 'reviews': Review, 'places': Place,
-        'cities': City, 'amenities': Amenity}
+           'cities': City, 'amenities': Amenity}
+
+
 @app_views.route('/status')
 def api_status():
     """Return a JSON"""
-    payload = {'status':'OK'}
+    payload = {'status': 'OK'}
     return make_response(payload)
 
 
