@@ -20,7 +20,7 @@ def teardown(error):
 @app.errorhandler(404)
 def page_not_found(error):
     """Custom error message or page"""
-    return make_response({"error": "Not Found"}, 404)
+    return make_response({"error": "Not found"}, 404)
 
 
 if __name__ == '__main__':
