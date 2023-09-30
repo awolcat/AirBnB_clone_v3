@@ -1,4 +1,5 @@
-"""This modules defines the app_views blueprint"""
+#!/usr/bin/python3
+"""This modules creates an instance of the app_views blueprint"""
 from flask import Blueprint
 
 
