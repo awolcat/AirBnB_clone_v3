@@ -1,16 +1,13 @@
 #!/usr/bin/python3
-"""This module defines a Flask app - the Airbnb Clone api"""
+"""This module defines a Flask app
+    - the Airbnb Clone api"""
 import os
-from flask import Flask
-
-
-app = Flask(__name__)
-
-
+from flask import Flask, make_response
 from models import storage
 from api.v1.views import app_views
 
 
+app = Flask(__name__)
 app.register_blueprint(app_views)
 
 
@@ -18,6 +15,12 @@ app.register_blueprint(app_views)
 def teardown(error):
     """Defines what happens at the end of a request"""
     storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """Custom error message or page"""
+    return make_response({"error": "Not Found"})
 
 
 if __name__ == '__main__':
