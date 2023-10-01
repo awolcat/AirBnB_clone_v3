@@ -10,7 +10,8 @@ from models.city import City
 from api.v1.views import app_views
 
 
-@app_views.route('/states/<state_id>/cities', strict_slashes=False, methods=['GET', 'POST'])
+@app_views.route('/states/<state_id>/cities',
+                 strict_slashes=False, methods=['GET', 'POST'])
 def get_post_cities(state_id):
     """Return a JSON of all states"""
     state_obj = storage.get(State, state_id)
@@ -29,6 +30,7 @@ def get_post_cities(state_id):
         if data.get("name") is None:
             abort(400, "Missing name")
         new_city = City()
+        data['state_id'] = state_id
         new_city.__dict__.update(data)
         storage.new(new_city)
         storage.save()
