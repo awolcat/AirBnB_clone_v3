@@ -92,5 +92,8 @@ class DBStorage:
 
     def update(self, cls, id, data):
         """Update an object and persist changes"""
-        self.__session.query(cls).filter(cls.id == id).update(data, synchronize_session=False)
+        self.__session.query(cls).filter(
+                                         cls.id == id
+                                         ).update(data,
+                                                  synchronize_session=False)
         self.__session.commit()
