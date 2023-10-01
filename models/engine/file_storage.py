@@ -84,3 +84,11 @@ class FileStorage:
         else:
             total = len(self.all(cls).keys())
         return total
+
+    def update(self, cls, id, data):
+        """Update object stored in file"""
+        obj = self.get(State, id)
+        storage.delete(obj)
+        obj.__dict__.update(data)
+        storage.new(obj)
+        storage.save()

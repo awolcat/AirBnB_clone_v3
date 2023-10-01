@@ -10,7 +10,7 @@ from api.v1.views import app_views
 
 
 @app_views.route('/states', strict_slashes=False, methods=['GET', 'POST'])
-def all_states():
+def get_post_states():
     """Return a JSON of all states"""
     if request.method == 'GET':
         temp = []

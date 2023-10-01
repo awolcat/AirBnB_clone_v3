@@ -11,7 +11,7 @@ from api.v1.views import app_views
 
 
 @app_views.route('/states/<state_id>/cities', strict_slashes=False, methods=['GET', 'POST'])
-def all_states(state_id):
+def get_post_cities(state_id):
     """Return a JSON of all states"""
     state_obj = storage.get(State, state_id)
     if state_obj is None:
@@ -37,7 +37,7 @@ def all_states(state_id):
 
 @app_views.route('/cities/<city_id>', strict_slashes=False,
                  methods=['GET', 'DELETE', 'PUT'])
-def state_by_id(city_id):
+def city_by_id(city_id):
     """Return the state identified by <state_id>"""
     the_city = storage.get(City, city_id)
     if the_city is None:
