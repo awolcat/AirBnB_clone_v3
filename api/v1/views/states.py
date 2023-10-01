@@ -49,7 +49,6 @@ def state_by_id(state_id):
     elif request.method == 'PUT':
         if request.is_json is False:
             abort(400, "Not a JSON")
-        the_state.__dict__.update(request.get_json())
-        storage.save()
-        the_state = storage.get(State, state_id)
-        return make_response(the_state.to_dict())
+        storage.update(State, state_id, request.get_json())
+        temp = storage.get(State, state_id)
+        return make_response(temp.to_dict())

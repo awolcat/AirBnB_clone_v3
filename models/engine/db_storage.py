@@ -77,9 +77,8 @@ class DBStorage:
 
     def get(self, cls, id):
         """If it exists, get the object of type cls identified by id"""
-        objects = self.all(cls)
-        object_key = f'{cls.__name__}.{id}'
-        return objects.get(object_key)
+        target = self.__session.query(cls).filter(cls.id == id).first()
+        return target
 
     def count(self, cls=None):
         """Count the total number of cls objects if cls
@@ -90,3 +89,8 @@ class DBStorage:
         else:
             total = len(self.all(cls).keys())
         return total
+
+    def update(self, cls, id, data):
+        """Update an object and persist changes"""
+        self.__session.query(cls).filter(cls.id == id).update(data, synchronize_session=False)
+        self.__session.commit()
