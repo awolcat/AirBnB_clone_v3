@@ -77,7 +77,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """If it exists, get the object of type cls identified by id"""
-        target = self.__session.query(cls).filter(cls.id == id).first()
+        target = self.__session.query(cls).filter(cls.id == id).one()
         return target
 
     def count(self, cls=None):
