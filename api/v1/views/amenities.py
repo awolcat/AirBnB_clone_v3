@@ -26,8 +26,7 @@ def get_post_amenities():
             abort(400, "Missing name")
         new_amenity = Amenity()
         new_amenity.__dict__.update(data)
-        storage.new(new_amenity)
-        storage.save()
+        new_amenity.save()
         return make_response(new_amenity.to_dict(), 201)
 
 

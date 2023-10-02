@@ -28,8 +28,7 @@ def get_post_users():
             abort(400, "Missing password")
         new_user = User()
         new_user.__dict__.update(data)
-        storage.new(new_user)
-        storage.save()
+        new_user.save()
         return make_response(new_user.to_dict(), 201)
 
 

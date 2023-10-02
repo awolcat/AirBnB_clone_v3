@@ -32,8 +32,7 @@ def get_post_cities(state_id):
         new_city = City()
         data['state_id'] = state_id
         new_city.__dict__.update(data)
-        storage.new(new_city)
-        storage.save()
+        new_city.save()
         return make_response(new_city.to_dict(), 201)
 
 
