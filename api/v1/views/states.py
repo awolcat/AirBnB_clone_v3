@@ -25,6 +25,7 @@ def get_post_states():
         if data.get("name") is None:
             abort(400, "Missing name")
         new_state = State(**data)
+        new_state.save()
         storage.new(new_state)
         storage.save()
         return make_response(new_state.to_dict(), 201)
