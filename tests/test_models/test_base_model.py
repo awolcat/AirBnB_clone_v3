@@ -55,6 +55,11 @@ class TestBaseModelDocs(unittest.TestCase):
                     "{:s} method needs a docstring".format(func[0])
                 )
 
+    @classmethod
+    def tearDownClass(self):
+        """Tear down initial setup"""
+        del self.base_funcs
+
 
 class TestBaseModel(unittest.TestCase):
     """Test the BaseModel class"""
