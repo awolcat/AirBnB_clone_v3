@@ -77,7 +77,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """If it exists, get the object of type cls identified by id"""
-        target = self.__session.query(cls).filter(cls.id == id).one()
+        target = self.__session.query(cls).filter(cls.id == id).first()
         if target:
             return target
         return None
