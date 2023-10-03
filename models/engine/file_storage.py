@@ -73,7 +73,7 @@ class FileStorage:
         """Get cls object with id if it exists"""
         objects = self.all(cls)
         object_key = '{}.{}'.format(cls.__name__, id)
-        return objects.get(object_key)
+        return objects.get(object_key, None)
 
     def count(self, cls=None):
         """Count all objects of class cls. If cls is none,
