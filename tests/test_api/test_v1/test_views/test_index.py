@@ -2,7 +2,7 @@
 """Module defines tests for index view functions"""
 import inspect
 import unittest
-import pycodestyle
+import pep8 as pycodestyle
 import api
 import requests
 from unittest import mock
