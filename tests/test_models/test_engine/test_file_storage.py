@@ -120,6 +120,10 @@ class TestFileStorage(unittest.TestCase):
         storage = FileStorage()
         none = storage.get(State, "not an id")
         self.assertTrue(none is None)
+        test_obj = State(name="Acapulco")
+        test_obj.save()
+        self.assertTrue(storage.get(State, test_obj.id) is test_obj)
+        test_obj.delete()
 
     @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_count(self):
@@ -127,5 +131,7 @@ class TestFileStorage(unittest.TestCase):
         storage = FileStorage()
         num = storage.count(State)
         self.assertTrue(type(num) is int)
-        num = storage.count()
-        self.assertTrue(type(num) is int)
+        test_obj = State(name="Acapulco")
+        test_obj.save()
+        num2 = storage.count(State)
+        self.assertTrue(num2 == num + 1)
