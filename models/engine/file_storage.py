@@ -72,7 +72,7 @@ class FileStorage:
     def get(self, cls, id):
         """Get cls object with id if it exists"""
         objects = self.all(cls)
-        object_key = '{}.{}'.format(cls.__name__, id)
+        object_key = cls.__name__ + '.' + id
         return objects.get(object_key, None)
 
     def count(self, cls=None):
